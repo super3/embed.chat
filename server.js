@@ -1,5 +1,6 @@
 const Redis = require('ioredis');
 const socketIo = require('socket.io');
+const dogNames = require('dog-names');
 
 const redis = new Redis();
 const io = socketIo(3050);
@@ -13,10 +14,14 @@ io.on('connection', socket => {
 
 		domains[domain].add(socket);
 
+		const name = dogNames.allRandom();
+
+		socket.emit('name', name);
+
 		socket.on('message', text => {
 			for (const socket of domains[domain])
 				socket.emit('message', {
-					name: 'Shawn',
+					name,
 					text
 				});
 		});
