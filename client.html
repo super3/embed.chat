@@ -1,0 +1,18 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+<ul>
+
+</ul>
+
+<script>
+const socket = io('http://localhost:3050');
+
+socket.emit('init', location.hostname);
+
+socket.on('message', ({name, text}) => {
+	document.querySelector('ul').innerHTML += `
+		<li><strong>${name}</strong>: ${text}</li>
+	`;
+});
+
+</script>
