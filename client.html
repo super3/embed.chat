@@ -7,11 +7,18 @@
 <script>
 const socket = io('http://localhost:3050');
 
+const escapeHtml = unsafe => unsafe
+   .replace(/&/g, "&amp;")
+   .replace(/</g, "&lt;")
+   .replace(/>/g, "&gt;")
+   .replace(/"/g, "&quot;")
+   .replace(/'/g, "&#039;");
+
 socket.emit('init', location.hostname);
 
 socket.on('message', ({name, text}) => {
 	document.querySelector('ul').innerHTML += `
-		<li><strong>${name}</strong>: ${text}</li>
+		<li><strong>${name}</strong>: ${escapeHtml(text)}</li>
 	`;
 });
 
