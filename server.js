@@ -4,6 +4,7 @@ const dogNames = require('dog-names');
 
 const pub = new Redis();
 const sub = new Redis();
+const redis = new Redis();
 
 const messagesChannel = 'chat-messages';
 const chatHistory = 'chat-history';
@@ -26,11 +27,13 @@ io.on('connection', socket => {
 		socket.emit('name', name);
 
 		socket.on('message', async text => {
+			const message = {
+				name,
+				text
+			};
+
 			await pub.publish(messagesChannel, JSON.stringify({
-				message: {
-					name,
-					text
-				},
+				message,
 				domain
 			}));
 
