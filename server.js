@@ -15,7 +15,7 @@ const io = socketIo(3050);
 const domains = {};
 
 io.on('connection', socket => {
-	socket.on('init', domain => {
+	socket.on('init', async domain => {
 		if (!(domains[domain] instanceof Set))
 			domains[domain] = new Set();
 

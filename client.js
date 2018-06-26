@@ -77,8 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		`;
 	});
 
-	socket.emit('message', 'Hello, world!');
-
 	const input = window.input = document.querySelector('.chat input');
 
 	input.addEventListener('keyup', event => {
