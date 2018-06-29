@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			.chat .messages {
 				overflow-y: scroll;
-				height: calc(90% - 40px);
+				height: calc(90% - 60px);
 				padding-top: 10px;
 				padding-bottom: 10px;
 				border-bottom: 1px solid #D8D8D8;
@@ -98,6 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				margin: auto;
 				margin-top: 11px;
 			}
+
+			.x {
+				height: 20px;
+				background-color: #F7F7F7;
+				border-bottom: 1px solid #D8D8D8;
+				padding: 0px 10px 3px 3px;
+				text-align: right;
+			}
 		</style>
 	`;
 
@@ -107,6 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		</span>
 
 		<div class='chat'>
+			<div class='x'>x</div>
+
 			<ul class='messages'></ul>
 
 			<div class='sendbox'>
@@ -151,5 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			socket.emit('message', input.value);
 			input.value = '';
 		}
+	});
+
+	const chat = document.querySelector('.chat');
+	const dot = document.querySelector('.dot');
+
+	dot.addEventListener('click', () => {
+		chat.style.display = 'block';
+		dot.style.display = 'none';
+	});
+
+	const x = document.querySelector('.chat .x');
+
+	x.addEventListener('click', () => {
+		chat.style.display = 'none';
+		dot.style.display = 'block';
 	});
 });
