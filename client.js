@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				border-radius: 5px;
 				border-bottom-left-radius: 0px;
 				border-bottom-right-radius: 0px;
+
+				display:none;
 			}
 
 			.chat .messages {
@@ -73,10 +75,37 @@ document.addEventListener('DOMContentLoaded', () => {
 				text-align: right;
 				padding-top: 10px;
 			}
+
+			.dot {
+			  height: 60px;
+			  width: 60px;
+			  background-color: #1972F5;
+			  border-radius: 50%;
+			  display: inline-block;
+
+				position: fixed;
+				right: 24px;
+				bottom: 20px;
+
+				box-shadow: 3px 3px 20px #ccc;
+			}
+
+			.dot img {
+				display: block;
+				filter: invert(100%);
+				height: 35px;
+				width: 35px;
+				margin: auto;
+				margin-top: 11px;
+			}
 		</style>
 	`;
 
 	document.body.innerHTML += `
+		<span class="dot">
+			<img src="comments.svg" />
+		</span>
+
 		<div class='chat'>
 			<ul class='messages'></ul>
 
