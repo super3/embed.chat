@@ -17,8 +17,9 @@ const domains = {};
 
 io.on('connection', socket => {
 	socket.on('init', async domain => {
-		if (!(domains[domain] instanceof Set))
+		if (!(domains[domain] instanceof Set)) {
 			domains[domain] = new Set();
+		}
 
 		domains[domain].add(socket);
 
@@ -46,8 +47,9 @@ io.on('connection', socket => {
 
 		const rawMessages = await redis.lrange(`${chatHistory}:${domain}`, 0, -1);
 
-		for (const rawMessage of rawMessages)
+		for (const rawMessage of rawMessages) {
 			socket.emit('message', JSON.parse(rawMessage));
+		}
 	});
 });
 
@@ -55,7 +57,8 @@ sub.on('message', (channel, rawMessage) => {
 	const {message, domain} = JSON.parse(rawMessage);
 
 	if (domains[domain] instanceof Set) {
-		for (const socket of domains[domain])
+		for (const socket of domains[domain]) {
 			socket.emit('message', message);
+		}
 	}
 });

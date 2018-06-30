@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			.chat .messages {
 				overflow-y: scroll;
-				height: calc(90% - 60px);
+				height: calc(90% - 65px);
 				padding-top: 10px;
 				padding-bottom: 10px;
 				border-bottom: 1px solid #D8D8D8;
@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const socket = window.socket = io('http://localhost:3050');
 
 	const escapeHtml = unsafe => unsafe
-	   .replace(/&/g, "&amp;")
-	   .replace(/</g, "&lt;")
-	   .replace(/>/g, "&gt;")
-	   .replace(/"/g, "&quot;")
-	   .replace(/'/g, "&#039;");
+	   .replace(/&/g, '&amp;')
+	   .replace(/</g, '&lt;')
+	   .replace(/>/g, '&gt;')
+	   .replace(/"/g, '&quot;')
+	   .replace(/'/g, '&#039;');
 
 	socket.emit('init', location.hostname);
 
