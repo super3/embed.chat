@@ -1,3 +1,5 @@
+/* global document, window, location, io */
+
 document.addEventListener('DOMContentLoaded', () => {
 	document.head.innerHTML += `
 		<style>
@@ -55,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				border-radius: 5px;
 				border-top-right-radius: 0px;
 				border-bottom-right-radius: 0px;
-			  position: relative;
+				position: relative;
 				top: 1px;
 			}
 
@@ -77,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			.dot {
-			  height: 60px;
-			  width: 60px;
-			  background-color: #1972F5;
-			  border-radius: 50%;
-			  display: inline-block;
+				height: 60px;
+				width: 60px;
+				background-color: #1972F5;
+				border-radius: 50%;
+				display: inline-block;
 
 				position: fixed;
 				right: 24px;
@@ -132,11 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const socket = window.socket = io('http://localhost:3050');
 
 	const escapeHtml = unsafe => unsafe
-	   .replace(/&/g, '&amp;')
-	   .replace(/</g, '&lt;')
-	   .replace(/>/g, '&gt;')
-	   .replace(/"/g, '&quot;')
-	   .replace(/'/g, '&#039;');
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
 
 	socket.emit('init', location.hostname);
 
