@@ -426,7 +426,7 @@ FORMS AND INPUTS
           box-shadow: 5px 5px 0 0 #2FE7B1;
 }
 
-/* 
+/*
 ====================
 TOOLTIP OVERRIDES
 ====================
@@ -718,7 +718,7 @@ Hero
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 550px;
+  min-height: 450px;
 }
 
 .hero-content {
