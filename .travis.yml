@@ -1,5 +1,8 @@
 language: node_js
 
+node_js:
+    "node"
+
 script:
 - npx browserify src/client.js -o html/bundle.js
 - git init

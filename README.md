@@ -1,4 +1,4 @@
-# chat
+# embed.chat
 
 [![Build Status](https://travis-ci.org/super3/chat.svg?branch=master)](https://travis-ci.org/super3/chat)
 [![Coverage Status](https://coveralls.io/repos/github/super3/chat/badge.svg?branch=master)](https://coveralls.io/github/super3/chat?branch=master)
