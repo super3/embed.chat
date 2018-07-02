@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				box-shadow: 3px 3px 20px #ccc;
 			}
 
-			.dot img {
+			.dot svg {
 				display: block;
 				filter: invert(100%);
 				height: 35px;
