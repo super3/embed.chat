@@ -6,3 +6,5 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/super3/chat.svg)](https://gitHub.com//super3/chat/graphs/contributors/)
 [![dependencies Status](https://david-dm.org/super3/chat/status.svg)](https://david-dm.org/super3/chat)
 [![devDependencies Status](https://david-dm.org/super3/chat/dev-status.svg)](https://david-dm.org/super3/chat?type=dev)
+
+Embed chat in your website in less than 5 minutes.
