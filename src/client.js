@@ -1,4 +1,5 @@
-/* global document, window, location, io */
+/* global document, window, location */
+const fs = require('fs');
 const io = require('socket.io-client');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,9 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		</style>
 	`;
 
+	const comments = fs.readFileSync(`${__dirname}/comments.svg`, 'utf8');
+
 	document.body.innerHTML += `
 		<span class="dot">
-			<img src="comments.svg" />
+			${comments}
 		</span>
 
 		<div class='chat'>
@@ -132,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		</div>
 	`;
 
-	const socket = window.socket = io('http://localhost:3050');
+	const socket = io('http://localhost:3050');
 
 	const escapeHtml = unsafe => unsafe
 		.replace(/&/g, '&amp;')
@@ -157,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		messages.scrollTop = messages.scrollHeight;
 	});
 
-	const input = window.input = document.querySelector('.chat input');
+	const input = document.querySelector('.chat input');
 
 	input.addEventListener('keyup', event => {
 		if (event.keyCode === 13) {

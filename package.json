@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/super3/chat#readme",
   "dependencies": {
+    "brfs": "^2.0.0",
     "browserify": "^16.2.2",
     "dog-names": "^1.0.2",
     "ioredis": "^3.2.2",

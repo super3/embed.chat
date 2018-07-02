@@ -4,7 +4,8 @@ node_js:
     "node"
 
 script:
-- npx browserify src/client.js -o html/bundle.js
+- node_modules/browserify/bin/cmd.js src/client.js -t brfs -o html/bundle.js
+- cat html/bundle.js
 - git init
 - git config user.name "Travis-CI"
 - git config user.email "travis@embed.chat"
