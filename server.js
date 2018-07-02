@@ -8,6 +8,9 @@ const redis = new Redis();
 
 const messagesChannel = 'chat-messages';
 const chatHistory = 'chat-history';
+const messagesCounter = 'chat-counter:messages';
+const domainsSet = 'chat-domains';
+// const usersSet = 'chat-users';
 
 sub.subscribe(messagesChannel);
 
@@ -16,7 +19,16 @@ const io = socketIo(3050);
 const domains = {};
 
 io.on('connection', socket => {
+	socket.on('subscribe-stats', async () => {
+		socket.emit('stats', {
+			messages: await redis.get(messagesCounter),
+			domains: await redis.scard(domainsSet)
+		});
+	});
+
 	socket.on('init', async domain => {
+		await redis.sadd(domainsSet, domain);
+
 		if (!(domains[domain] instanceof Set)) {
 			domains[domain] = new Set();
 		}
@@ -39,6 +51,8 @@ io.on('connection', socket => {
 			}));
 
 			await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
+
+			await redis.incr(messagesCounter);
 		});
 
 		socket.on('disconnect', () => {

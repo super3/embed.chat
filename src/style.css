@@ -23,6 +23,8 @@
 	border-bottom-right-radius: 0px;
 
 	display:none;
+
+	background-color: white;
 }
 
 .__embed.chat .chat .messages {

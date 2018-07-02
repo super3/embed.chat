@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo",
+    "dev": "watchify src/client.js -t brfs -o html/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
     "ioredis": "^3.2.2",
     "koa": "^2.5.1",
     "socket.io": "^2.1.1",
-    "socket.io-client": "^2.1.1"
+    "socket.io-client": "^2.1.1",
+    "watchify": "^3.11.0"
   },
   "devDependencies": {
     "xo": "^0.21.1"
