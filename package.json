@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/super3/chat#readme",
   "dependencies": {
+    "browserify": "^16.2.2",
     "dog-names": "^1.0.2",
     "ioredis": "^3.2.2",
     "koa": "^2.5.1",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
     "xo": "^0.21.1"

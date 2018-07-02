@@ -1,4 +1,5 @@
 /* global document, window, location, io */
+const io = require('socket.io-client');
 
 document.addEventListener('DOMContentLoaded', () => {
 	document.head.innerHTML += `
