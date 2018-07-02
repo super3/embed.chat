@@ -42,41 +42,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	socket.emit('init', location.hostname);
 
+	const $name = document.querySelector('.__embed.chat .chat .name');
+	const $messages = document.querySelector('.__embed.chat .chat .messages');
+	const $input = document.querySelector('.__embed.chat .chat input');
+	const $chat = document.querySelector('.__embed.chat .chat');
+	const $dot = document.querySelector('.__embed.chat .dot');
+	const $x = document.querySelector('.__embed.chat .chat .x');
+
 	socket.on('name', name => {
-		document.querySelector('.chat .name').innerHTML = name;
+		$name.innerHTML = name;
 	});
 
-	const messages = document.querySelector('.chat .messages');
-
 	socket.on('message', ({name, text}) => {
-		messages.innerHTML += `
+		$messages.innerHTML += `
 			<li><strong>${name}</strong>: ${escapeHtml(text)}</li>
 		`;
 
-		messages.scrollTop = messages.scrollHeight;
+		$messages.scrollTop = $messages.scrollHeight;
 	});
 
-	const input = document.querySelector('.chat input');
-
-	input.addEventListener('keyup', event => {
+	$input.addEventListener('keyup', event => {
 		if (event.keyCode === 13) {
-			socket.emit('message', input.value);
-			input.value = '';
+			socket.emit('message', $input.value);
+			$input.value = '';
 		}
 	});
 
-	const chat = document.querySelector('.chat');
-	const dot = document.querySelector('.dot');
-
-	dot.addEventListener('click', () => {
-		chat.style.display = 'block';
-		dot.style.display = 'none';
+	$dot.addEventListener('click', () => {
+		$chat.style.display = 'block';
+		$dot.style.display = 'none';
 	});
 
-	const x = document.querySelector('.chat .x');
-
-	x.addEventListener('click', () => {
-		chat.style.display = 'none';
-		dot.style.display = 'block';
+	$x.addEventListener('click', () => {
+		$chat.style.display = 'none';
+		$dot.style.display = 'block';
 	});
 });
