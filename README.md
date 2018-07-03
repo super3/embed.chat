@@ -8,3 +8,12 @@
 [![devDependencies Status](https://david-dm.org/super3/chat/dev-status.svg)](https://david-dm.org/super3/chat?type=dev)
 
 Embed chat in your website in less than 5 minutes.
+
+#### Install [Redis](https://redis.io/)
+```bash
+wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+tar xzf redis-4.0.9.tar.gz
+cd redis-4.0.9
+make
+src/redis-server
+```
