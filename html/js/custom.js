@@ -131,3 +131,19 @@ $(window).on('load', function() {
   });
 
 })(jQuery);
+
+/* eslint-enable */
+
+(() => {
+    const socket = io('http://localhost:3050');
+
+    socket.emit('subscribe-stats');
+
+    const $messages = document.querySelector('.messages');
+    const $domains = document.querySelector('.domains');
+
+    socket.on('stats', ({messages, domains}) => {
+        $messages.innerText = messages;
+        $domains.innerText = domains;
+    });
+})();

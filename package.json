@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "xo": "^0.21.1"
+  },
+  "xo": {
+    "ignores": ["html/js/custom.js"]
   }
 }
