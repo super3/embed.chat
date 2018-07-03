@@ -9,7 +9,7 @@
 
 Embed chat in your website in less than 5 minutes.
 
-#### Install [Redis](https://redis.io/)
+## Install [Redis](https://redis.io/)
 ```bash
 wget http://download.redis.io/releases/redis-4.0.9.tar.gz
 tar xzf redis-4.0.9.tar.gz
