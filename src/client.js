@@ -3,21 +3,13 @@ const fs = require('fs');
 const io = require('socket.io-client');
 
 document.addEventListener('DOMContentLoaded', () => {
-	const $iframe = document.createElement('iframe');
-
-	document.body.appendChild($iframe);
-
-	const iframe = {
-		document: $iframe.contentDocument
-	};
-
-	iframe.document.head.innerHTML += `<style>${
+	document.head.innerHTML += `<style>${
 		fs.readFileSync(`${__dirname}/style.css`, 'utf8')
 	}</style>`;
 
 	const comments = fs.readFileSync(`${__dirname}/comments.svg`, 'utf8');
 
-	iframe.document.body.innerHTML += `
+	document.body.innerHTML += `
 		<div class='__embed_chat'>
 			<span class="dot">
 				${comments}
@@ -50,14 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	socket.emit('init', location.hostname);
 
-	const $name = iframe.document.querySelector('.__embed_chat .chat .name');
-	const $messages = iframe.document.querySelector('.__embed_chat .chat .messages');
-	const $input = iframe.document.querySelector('.__embed_chat .chat input');
-	const $chat = iframe.document.querySelector('.__embed_chat .chat');
-	const $dot = iframe.document.querySelector('.__embed_chat .dot');
-	const $x = iframe.document.querySelector('.__embed_chat .chat .x');
-
-	console.log('name', $name);
+	const $name = document.querySelector('.__embed_chat .chat .name');
+	const $messages = document.querySelector('.__embed_chat .chat .messages');
+	const $input = document.querySelector('.__embed_chat .chat input');
+	const $chat = document.querySelector('.__embed_chat .chat');
+	const $dot = document.querySelector('.__embed_chat .dot');
+	const $x = document.querySelector('.__embed_chat .chat .x');
 
 	socket.on('name', name => {
 		$name.innerHTML = name;
@@ -87,6 +77,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		$chat.style.display = 'none';
 		$dot.style.display = 'block';
 	});
-
-
 });
