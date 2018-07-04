@@ -11,12 +11,8 @@ Embed chat in your website in less than 5 minutes.
 
 ## Install
 
-### [Redis](https://redis.io/)
-
-``` bash
-wget http://download.redis.io/releases/redis-4.0.9.tar.gz
-tar xzf redis-4.0.9.tar.gz
-cd redis-4.0.9
-make
-src/redis-server
-```
+1. [Redis](https://redis.io/download#installation)
+2. [Node.js](https://nodejs.org/en/)
+3. `git clone https://github.com/super3/embed.chat`
+4. `npm install`
+5. `node server`
