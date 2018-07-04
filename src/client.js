@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	$dot.addEventListener('click', () => {
 		$chat.style.display = 'block';
 		$dot.style.display = 'none';
+
+		$messages.scrollTop = $messages.scrollHeight;
 	});
 
 	$x.addEventListener('click', () => {

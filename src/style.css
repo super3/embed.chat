@@ -4,129 +4,135 @@
 }
 
 .__embed_chat * {
-	background-attachment: scroll!important;
-	background-color: transparent!important;
-	background-image: none!important;
-	background-position: 0 0!important;
-	background-repeat: repeat!important;
-	border-color: currentcolor!important;
-	border-style: none!important;
-	border-width: medium!important;
-	bottom: auto!important;
-	clear: none!important;
-	clip: auto!important;
-	color: inherit!important;
-	counter-increment: none!important;
-	counter-reset: none!important;
-	cursor: auto!important;
-	direction: inherit!important;
-	display: inline!important;
-	float: none!important;
-	font-size: inherit!important;
-	font-style: inherit!important;
-	font-variant: normal!important;
-	font-weight: inherit!important;
-	height: auto!important;
-	left: auto!important;
-	letter-spacing: normal!important;
-	line-height: inherit!important;
-	list-style-type: inherit!important;
-	list-style-position: outside!important;
-	list-style-image: none!important;
+	background-attachment: scroll;
+	background-color: transparent;
+	background-image: none;
+	background-position: 0 0;
+	background-repeat: repeat;
+	border-color: currentcolor;
+	border-style: none;
+	border-width: medium;
+	bottom: auto;
+	clear: none;
+	clip: auto;
+	color: inherit;
+	counter-increment: none;
+	counter-reset: none;
+	cursor: auto;
+	direction: inherit;
+	display: block;
+	float: none;
+	font-size: inherit;
+	font-style: inherit;
+	font-variant: normal;
+	font-weight: inherit;
+	height: auto;
+	left: auto;
+	letter-spacing: normal;
+	line-height: inherit;
+	list-style-type: inherit;
+	list-style-position: outside;
+	list-style-image: none;
 	margin: 0;
-	max-height: none!important;
-	max-width: none!important;
-	min-height: 0!important;
-	min-width: 0!important;
-	outline: 0!important;
-	overflow: visible!important;
+	max-height: none;
+	max-width: none;
+	min-height: 0;
+	min-width: 0;
+	outline: 0;
+	overflow: visible;
 	padding: 0;
-	position: static!important;
-	quotes: "" ""!important;
-	right: auto!important;
-	table-layout: auto!important;
-	text-align: inherit!important;
-	text-decoration: inherit!important;
-	text-indent: 0!important;
-	text-transform: none!important;
-	text-rendering: auto!important;
-	top: auto!important;
-	unicode-bidi: normal!important;
-	vertical-align: baseline!important;
-	visibility: inherit!important;
-	white-space: normal!important;
-	width: auto!important;
-	word-spacing: normal!important;
-	z-index: auto!important;
-	-webkit-background-origin: padding!important;
-	-moz-background-origin: padding!important;
-	-ms-background-origin: padding-box!important;
-	-o-background-origin: padding-box!important;
-	background-origin: padding-box!important;
-	-webkit-background-clip: border!important;
-	-moz-background-clip: border!important;
-	background-clip: border-box!important;
-	-webkit-background-size: auto!important;
-	-moz-background-size: auto!important;
-	-o-background-size: auto!important;
-	background-size: auto!important;
-	-moz-border-image: -moz--compass-list(none)!important;
-	-webkit-border-image: -owg--compass-list(none)!important;
-	-webkit-border-image: -webkit--compass-list(none)!important;
-	-o-border-image: -o--compass-list(none)!important;
-	border-image: none!important;
-	-webkit-border-radius: 0!important;
-	-moz-border-radius: 0!important;
-	-ms-border-radius: 0!important;
-	-o-border-radius: 0!important;
-	border-radius: 0!important;
-	-webkit-box-shadow: none!important;
-	-moz-box-shadow: none!important;
-	box-shadow: none!important;
-	-webkit-box-sizing: content-box!important;
-	-moz-box-sizing: content-box!important;
-	box-sizing: content-box!important;
-	column-count: auto!important;
-	column-gap: normal!important;
-	column-rule: medium none #000!important;
-	column-width: auto!important;
-	column-span: 1!important;
-	-webkit-text-fill-color: currentcolor!important;
-	-webkit-tap-highlight-color: transparent!important;
-	-moz-tap-highlight-color: transparent!important;
-	-ms-tap-highlight-color: transparent!important;
-	-o-tap-highlight-color: transparent!important;
-	font-feature-settings: normal!important;
-	overflow-x: visible!important;
-	overflow-y: visible!important;
-	-webkit-hyphens: manual!important;
-	-moz-hyphens: manual!important;
-	-ms-hyphens: manual!important;
-	hyphens: manual!important;
-	-webkit-hyphenate-character: "â€"!important;
-	hyphenate-character: "â€"!important;
-	-webkit-perspective: none!important;
-	-moz-perspective: none!important;
-	-ms-perspective: none!important;
-	-o-perspective: none!important;
-	perspective: none!important;
-	-webkit-perspective-origin: 50% 50%!important;
-	-moz-perspective-origin: 50% 50%!important;
-	-ms-perspective-origin: 50% 50%!important;
-	-o-perspective-origin: 50% 50%!important;
-	perspective-origin: 50% 50%!important;
-	-webkit-backface-visibility: visible!important;
-	-moz-backface-visibility: visible!important;
-	-ms-backface-visibility: visible!important;
-	-o-backface-visibility: visible!important;
-	backface-visibility: visible!important;
-	text-shadow: none!important;
-	-webkit-transition: all 0s ease!important;
-	-webkit-transition-delay: 0s!important;
-	-moz-transition: all 0s ease 0s!important;
-	-o-transition: all 0s ease 0s!important;
-	transition: all 0s ease 0s!important;
-	word-break: normal!important;
+	position: static;
+	quotes: "" "";
+	right: auto;
+	table-layout: auto;
+	text-align: inherit;
+	text-decoration: inherit;
+	text-indent: 0;
+	text-transform: none;
+	text-rendering: auto;
+	top: auto;
+	unicode-bidi: normal;
+	vertical-align: baseline;
+	visibility: inherit;
+	white-space: normal;
+	width: auto;
+	word-spacing: normal;
+	z-index: auto;
+	-webkit-background-origin: padding;
+	-moz-background-origin: padding;
+	-ms-background-origin: padding-box;
+	-o-background-origin: padding-box;
+	background-origin: padding-box;
+	-webkit-background-clip: border;
+	-moz-background-clip: border;
+	background-clip: border-box;
+	-webkit-background-size: auto;
+	-moz-background-size: auto;
+	-o-background-size: auto;
+	background-size: auto;
+	-moz-border-image: -moz--compass-list(none);
+	-webkit-border-image: -owg--compass-list(none);
+	-webkit-border-image: -webkit--compass-list(none);
+	-o-border-image: -o--compass-list(none);
+	border-image: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	column-count: auto;
+	column-gap: normal;
+	column-rule: medium none #000;
+	column-width: auto;
+	column-span: 1;
+	-webkit-text-fill-color: currentcolor;
+	-webkit-tap-highlight-color: transparent;
+	-moz-tap-highlight-color: transparent;
+	-ms-tap-highlight-color: transparent;
+	-o-tap-highlight-color: transparent;
+	font-feature-settings: normal;
+	overflow-x: visible;
+	overflow-y: visible;
+	-webkit-hyphens: manual;
+	-moz-hyphens: manual;
+	-ms-hyphens: manual;
+	hyphens: manual;
+	-webkit-hyphenate-character: "â€";
+	hyphenate-character: "â€";
+	-webkit-perspective: none;
+	-moz-perspective: none;
+	-ms-perspective: none;
+	-o-perspective: none;
+	perspective: none;
+	-webkit-perspective-origin: 50% 50%;
+	-moz-perspective-origin: 50% 50%;
+	-ms-perspective-origin: 50% 50%;
+	-o-perspective-origin: 50% 50%;
+	perspective-origin: 50% 50%;
+	-webkit-backface-visibility: visible;
+	-moz-backface-visibility: visible;
+	-ms-backface-visibility: visible;
+	-o-backface-visibility: visible;
+	backface-visibility: visible;
+	text-shadow: none;
+	-webkit-transition: all 0s ease;
+	-webkit-transition-delay: 0s;
+	-moz-transition: all 0s ease 0s;
+	-o-transition: all 0s ease 0s;
+	transition: all 0s ease 0s;
+	word-break: normal;
+	color: #343434;
+}
+
+.__embed_chat strong {
+	display: inline;
+	font-weight: bold;
 }
 
 .__embed_chat .chat {
@@ -155,7 +161,7 @@
 
 .__embed_chat .chat .messages {
 	overflow-y: scroll;
-	height: calc(80% - 65px);
+	height: calc(90% - 65px);
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #D8D8D8;
@@ -170,6 +176,7 @@
 .__embed_chat .chat .messages li {
 	margin: 5px 15px 0px 15px;
 	list-style-type: none;
+	display:block;
 }
 
 .__embed_chat .chat .name {
@@ -186,7 +193,7 @@
 
 .__embed_chat .chat input {
 	height: 10%;
-	width:100%;
+	width: 30%;
 
 	border-radius: 5px;
 	padding: 15px;
@@ -194,11 +201,19 @@
 
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 0px;
+	background-color: white;
+	font-size: 14px;
 }
 
 .__embed_chat .sendname {
+	width: 30%;
 	text-align: right;
-	padding-top: 10px;
+	display: inline-block;
+	font-size: 14px;
+	min-width: auto;
+
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .__embed_chat .dot {
