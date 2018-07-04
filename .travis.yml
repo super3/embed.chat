@@ -11,4 +11,4 @@ script:
 - git config user.email "travis@embed.chat"
 - git add .
 - git commit -m "Deployed to Github Pages"
-- git push --force --quiet "https://$GH_TOKEN@github.com/$REPO" master > /dev/null 2>&1
+- git push --force --quiet "https://$GH_TOKEN@github.com/$REPO" gh-pages > /dev/null 2>&1
