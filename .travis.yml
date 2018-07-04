@@ -9,6 +9,7 @@ script:
 - git init
 - git config user.name "Travis-CI"
 - git config user.email "travis@embed.chat"
+- git checkout gh-pages
 - git add .
 - git commit -m "Deployed to Github Pages"
 - git push --force --quiet "https://$GH_TOKEN@github.com/$REPO" gh-pages > /dev/null 2>&1
