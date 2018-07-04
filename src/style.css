@@ -1,9 +1,9 @@
-.__embed.chat .chat, __embed.chat .chat * {
+.__embed_chat .chat, __embed_chat .chat * {
 	margin: 0;
 	padding: 0;
 }
 
-.__embed.chat .chat {
+.__embed_chat .chat {
 	position: fixed;
 	font-size: 17px;
 
@@ -27,7 +27,7 @@
 	background-color: white;
 }
 
-.__embed.chat .chat .messages {
+.__embed_chat .chat .messages {
 	overflow-y: scroll;
 	height: calc(90% - 65px);
 	padding-top: 10px;
@@ -35,18 +35,18 @@
 	border-bottom: 1px solid #D8D8D8;
 }
 
-.__embed.chat .sendbox {
+.__embed_chat .sendbox {
 	display: flex;
 	padding: 10px 15px 10px 15px;
 	background-color: #F7F7F7;
 }
 
-.__embed.chat .chat .messages li {
+.__embed_chat .chat .messages li {
 	margin: 5px 15px 0px 15px;
 	list-style-type: none;
 }
 
-.__embed.chat .chat .name {
+.__embed_chat .chat .name {
 	background-color: #E9ECEF;
 	padding: 10px;
 	border: 1px solid #ced4da;
@@ -58,7 +58,7 @@
 	top: 1px;
 }
 
-.__embed.chat .chat input {
+.__embed_chat .chat input {
 	height: 10%;
 	width:100%;
 
@@ -70,12 +70,12 @@
 	border-bottom-left-radius: 0px;
 }
 
-.__embed.chat .sendname {
+.__embed_chat .sendname {
 	text-align: right;
 	padding-top: 10px;
 }
 
-.__embed.chat .dot {
+.__embed_chat .dot {
 	height: 60px;
 	width: 60px;
 	background-color: #1972F5;
@@ -89,7 +89,7 @@
 	box-shadow: 3px 3px 20px #ccc;
 }
 
-.__embed.chat .dot svg {
+.__embed_chat .dot svg {
 	display: block;
 	filter: invert(100%);
 	height: 35px;
@@ -98,7 +98,7 @@
 	margin-top: 11px;
 }
 
-.__embed.chat .x {
+.__embed_chat .x {
 	height: 20px;
 	background-color: #F7F7F7;
 	border-bottom: 1px solid #D8D8D8;
