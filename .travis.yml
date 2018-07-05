@@ -10,6 +10,7 @@ script:
 - rm -rf .git
 - cd html
 - rm .gitignore
+- git init
 - git add .
 - git commit -m "Deployed to Github Pages"
 - git push --force "https://$GH_TOKEN@github.com/$REPO" gh-pages
