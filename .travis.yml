@@ -14,4 +14,4 @@ script:
 - git checkout -b gh-pages
 - git add .
 - git commit -m "Deployed to Github Pages"
-- git push --force "https://$GH_TOKEN@github.com/embed.chat" gh-pages
+- git push --force "https://$GH_TOKEN@github.com/super3/embed.chat" gh-pages
