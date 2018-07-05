@@ -1,0 +1,16 @@
+{
+	apps: [{
+		name: "embed.chat",
+		script: "server.js",
+		max_memory_restart: "256M",
+		watch: true,
+		env: {
+			NODE_ENV: "production",
+			DEBUG: "embed.chat:*"
+		},
+		env_production: {
+			NODE_ENV: "production",
+			DEBUG: "embed.chat:*"
+		}
+	}]
+}
