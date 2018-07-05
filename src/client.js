@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		</div>
 	`;
 
-	const socket = io('http://localhost:3050');
+	const socket = io('http://socket.embed.chat:3050');
 
 	const escapeHtml = unsafe => unsafe
 		.replace(/&/g, '&amp;')
