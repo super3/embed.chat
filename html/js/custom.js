@@ -136,7 +136,7 @@ $(window).on('load', function() {
 
 (() => {
     $(document).ready(() => {
-        const socket = io('http://localhost:3050');
+        const socket = io('https://socket.embed.chat');
 
         socket.emit('subscribe-stats');
 
