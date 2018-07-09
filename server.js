@@ -35,11 +35,18 @@ io.on('connection', socket => {
 
 		domains[domain].add(socket);
 
-		const name = dogNames.allRandom();
+		let name = dogNames.allRandom();
 
 		socket.emit('name', name);
 
 		socket.on('message', async text => {
+			if (text.startsWith('/name')) {
+				name = text.split(' ')[1].slice(0, 9) || name;
+				socket.emit('name', name);
+
+				return;
+			}
+
 			const message = {
 				name,
 				text
@@ -60,6 +67,8 @@ io.on('connection', socket => {
 		});
 
 		const rawMessages = await redis.lrange(`${chatHistory}:${domain}`, 0, -1);
+
+		rawMessages.reverse();
 
 		for (const rawMessage of rawMessages) {
 			socket.emit('message', JSON.parse(rawMessage));

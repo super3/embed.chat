@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				<ul class='messages'></ul>
 
 				<div class='sendbox'>
-					<div class='sendname'>
-						<span class='name'></span>
-					</div>
-
 					<input placeholder="Type message here...">
 				</div>
 			</div>
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	socket.emit('init', location.hostname);
 
-	const $name = document.querySelector('.__embed_chat .chat .name');
 	const $messages = document.querySelector('.__embed_chat .chat .messages');
 	const $input = document.querySelector('.__embed_chat .chat input');
 	const $chat = document.querySelector('.__embed_chat .chat');
@@ -50,12 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	const $x = document.querySelector('.__embed_chat .chat .x');
 
 	socket.on('name', name => {
-		$name.innerHTML = name;
+		$input.placeholder = `${name}, type your message here...`;
 	});
 
 	socket.on('message', ({name, text}) => {
 		$messages.innerHTML += `
-			<li><strong>${name}</strong>: ${escapeHtml(text)}</li>
+			<li><strong>${escapeHtml(name)}</strong>: ${escapeHtml(text)}</li>
 		`;
 
 		$messages.scrollTop = $messages.scrollHeight;
@@ -72,11 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		$chat.style.display = 'block';
 		$dot.style.display = 'none';
 
+		localStorage.setItem('chat-open', 'true');
+
 		$messages.scrollTop = $messages.scrollHeight;
 	});
+
+	if (localStorage.getItem('chat-open') === 'true') {
+		$chat.style.display = 'block';
+		$dot.style.display = 'none';
+	}
 
 	$x.addEventListener('click', () => {
 		$chat.style.display = 'none';
 		$dot.style.display = 'block';
+
+		localStorage.setItem('chat-open', 'false');
 	});
 });

@@ -161,14 +161,13 @@
 
 .__embed_chat .chat .messages {
 	overflow-y: scroll;
-	height: calc(90% - 65px);
+	height: calc(90% - 78px);
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #D8D8D8;
 }
 
 .__embed_chat .sendbox {
-	display: flex;
 	padding: 10px 15px 10px 15px;
 	background-color: #F7F7F7;
 }
@@ -192,15 +191,12 @@
 }
 
 .__embed_chat .chat input {
-	height: 10%;
-	width: 30%;
+	width: 100%;
 
 	border-radius: 5px;
 	padding: 15px;
 	border: 1px solid #ced4da;
-
-	border-top-left-radius: 0px;
-	border-bottom-left-radius: 0px;
+	box-sizing: border-box;
 	background-color: white;
 	font-size: 14px;
 }
