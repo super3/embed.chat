@@ -10,7 +10,9 @@ const messagesChannel = 'chat-messages';
 const chatHistory = 'chat-history';
 const messagesCounter = 'chat-counter:messages';
 const domainsSet = 'chat-domains';
-// const usersSet = 'chat-users';
+const chattersCounter = 'chat-chatters';
+const pageViewsCounter = 'chat-views';
+const liveChattersCounter = 'chat-live';
 
 sub.subscribe(messagesChannel);
 
@@ -21,13 +23,22 @@ const domains = {};
 io.on('connection', socket => {
 	socket.on('subscribe-stats', async () => {
 		socket.emit('stats', {
-			messages: await redis.get(messagesCounter),
-			domains: await redis.scard(domainsSet)
+			messages: await redis.get(messagesCounter) || 0,
+			domains: await redis.scard(domainsSet) || 0,
+			chatters: await redis.get(chattersCounter) || 0,
+			liveChatters: await redis.get(liveChattersCounter) || 0,
+			pageViews: await redis.get(pageViewsCounter) || 0
 		});
 	});
 
-	socket.on('init', async domain => {
+	socket.on('init', async (domain, isNewVisitor) => {
+		await redis.incr(pageViewsCounter);
+		await redis.incr(liveChattersCounter);
 		await redis.sadd(domainsSet, domain);
+
+		if (isNewVisitor === true) {
+			await redis.incr(chattersCounter);
+		}
 
 		if (!(domains[domain] instanceof Set)) {
 			domains[domain] = new Set();
@@ -62,8 +73,9 @@ io.on('connection', socket => {
 			await redis.incr(messagesCounter);
 		});
 
-		socket.on('disconnect', () => {
+		socket.on('disconnect', async () => {
 			domains[domain].delete(socket);
+			await redis.decr(liveChattersCounter);
 		});
 
 		const rawMessages = await redis.lrange(`${chatHistory}:${domain}`, 0, -1);

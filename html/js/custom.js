@@ -136,18 +136,22 @@ $(window).on('load', function() {
 
 (() => {
     $(document).ready(() => {
-        const socket = io('https://socket.embed.chat');
+        const socket = io('http://localhost:3050');
 
         socket.emit('subscribe-stats');
 
         const $messages = document.querySelector('.messages');
         const $domains = document.querySelector('.domains');
+        const $chatters = document.querySelector('.chatters');
+        const $liveChatters = document.querySelector('.live-chatters');
+        const $pageViews = document.querySelector('.page-views');
 
-        socket.on('stats', ({messages, domains}) => {
-            console.log(messages, domains);
-
+        socket.on('stats', ({messages, domains, chatters, liveChatters, pageViews }) => {
             $messages.innerHTML = messages;
             $domains.innerHTML = domains;
+            $chatters.innerHTML = chatters;
+            $liveChatters.innerHTML = liveChatters;
+            $pageViews.innerHTML = pageViews;
         });
     });
 })();

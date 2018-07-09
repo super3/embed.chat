@@ -1,4 +1,4 @@
-/* global document, location */
+/* global document, location, localStorage */
 const fs = require('fs');
 const io = require('socket.io-client');
 
@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		.replace(/"/g, '&quot;')
 		.replace(/'/g, '&#039;');
 
-	socket.emit('init', location.hostname);
+	socket.emit('init',
+		location.hostname,
+		localStorage.getItem('new-visitor') === 'false'
+	);
 
 	const $messages = document.querySelector('.__embed_chat .chat .messages');
 	const $input = document.querySelector('.__embed_chat .chat input');
