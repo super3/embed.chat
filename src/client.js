@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.getItem('new-visitor') !== 'false'
 	);
 
+	localStorage.setItem('new-visitor', 'false');
+
 	const $messages = document.querySelector('.__embed_chat .chat .messages');
 	const $input = document.querySelector('.__embed_chat .chat input');
 	const $chat = document.querySelector('.__embed_chat .chat');
