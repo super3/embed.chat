@@ -19,16 +19,34 @@ sub.subscribe(messagesChannel);
 const io = socketIo(3050);
 
 const domains = {};
+const stats = new Set();
+
+async function getStats() {
+	return {
+		messages: await redis.get(messagesCounter) || 0,
+		domains: await redis.scard(domainsSet) || 0,
+		chatters: await redis.get(chattersCounter) || 0,
+		liveChatters: await redis.get(liveChattersCounter) || 0,
+		pageViews: await redis.get(pageViewsCounter) || 0
+	};
+}
+
+setInterval(async () => {
+	const data = await getStats();
+
+	for (const socket of stats) {
+		socket.emit('stats', data);
+	}
+}, 1000);
 
 io.on('connection', socket => {
 	socket.on('subscribe-stats', async () => {
-		socket.emit('stats', {
-			messages: await redis.get(messagesCounter) || 0,
-			domains: await redis.scard(domainsSet) || 0,
-			chatters: await redis.get(chattersCounter) || 0,
-			liveChatters: await redis.get(liveChattersCounter) || 0,
-			pageViews: await redis.get(pageViewsCounter) || 0
-		});
+		socket.emit('stats', await getStats());
+		stats.add(socket);
+	});
+
+	socket.on('disconnect', () => {
+		stats.delete(socket);
 	});
 
 	socket.on('init', async (domain, isNewVisitor) => {
