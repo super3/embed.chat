@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	socket.emit('init',
 		location.hostname,
-		localStorage.getItem('new-visitor') === 'false'
+		localStorage.getItem('new-visitor') !== 'false'
 	);
 
 	const $messages = document.querySelector('.__embed_chat .chat .messages');
