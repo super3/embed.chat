@@ -6,7 +6,7 @@
   "scripts": {
     "test": "xo",
     "dev": "watchify src/client.js -t brfs -o html/bundle.js",
-    "test": "test/*.js",
+    "test": "mocha test/*.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --exit"
   },
   "repository": {
