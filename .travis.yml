@@ -3,15 +3,20 @@ language: node_js
 node_js:
     "node"
 
-script:
-- node_modules/browserify/bin/cmd.js src/client.js -t brfs -o html/bundle.js
-- git config user.name "Travis-CI"
-- git config user.email "travis@embed.chat"
-- rm -rf .git
-- cd html
-- rm .gitignore
-- git init
-- git checkout -b gh-pages
-- git add .
-- git commit -m "Deployed to Github Pages"
-- git push --force "https://$GH_TOKEN@github.com/super3/embed.chat" gh-pages
+services:
+    - redis-server
+
+after_script:
+    - npm run coverage
+    - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
+    - node_modules/browserify/bin/cmd.js src/client.js -t brfs -o html/bundle.js
+    - git config user.name "Travis-CI"
+    - git config user.email "travis@embed.chat"
+    - rm -rf .git
+    - cd html
+    - rm .gitignore
+    - git init
+    - git checkout -b gh-pages
+    - git add .
+    - git commit -m "Deployed to Github Pages"
+    - git push --force "https://$GH_TOKEN@github.com/super3/embed.chat" gh-pages

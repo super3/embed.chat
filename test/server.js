@@ -1,0 +1,5 @@
+/* global describe */
+
+describe('Server', () => {
+
+});

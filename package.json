@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "xo",
-    "dev": "watchify src/client.js -t brfs -o html/bundle.js"
+    "dev": "watchify src/client.js -t brfs -o html/bundle.js",
+    "test": "test/*.js",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --exit"
   },
   "repository": {
     "type": "git",
@@ -24,13 +26,17 @@
     "ioredis": "^3.2.2",
     "koa": "^2.5.1",
     "socket.io": "^2.1.1",
-    "socket.io-client": "^2.1.1",
-    "watchify": "^3.11.0"
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
-    "xo": "^0.21.1"
+    "xo": "^0.21.1",
+    "mocha": "^5.2.0",
+    "watchify": "^3.11.0",
+    "istanbul": "^1.1.0-alpha.1"
   },
   "xo": {
-    "ignores": ["html/js/custom.js"]
+    "ignores": [
+      "html/js/custom.js"
+    ]
   }
 }
