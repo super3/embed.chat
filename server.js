@@ -69,9 +69,12 @@ io.on('connection', socket => {
 		socket.emit('name', name);
 
 		socket.on('message', async text => {
-			if (text.startsWith('/name')) {
-				name = text.split(' ')[1].slice(0, 9) || name;
-				socket.emit('name', name);
+			if (text.startsWith('/')) {
+
+				if (text.startsWith('/name')) {
+					name = text.split(' ')[1].slice(0, 9) || name;
+					socket.emit('name', name);
+				}
 
 				return;
 			}

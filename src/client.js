@@ -2,6 +2,8 @@
 const fs = require('fs');
 const io = require('socket.io-client');
 
+const localStorage = require('./localStorage');
+
 document.addEventListener('DOMContentLoaded', () => {
 	document.head.innerHTML += `<style>${
 		fs.readFileSync(`${__dirname}/style.css`, 'utf8')
@@ -49,6 +51,37 @@ document.addEventListener('DOMContentLoaded', () => {
 	const $dot = document.querySelector('.__embed_chat .dot');
 	const $x = document.querySelector('.__embed_chat .chat .x');
 
+	const userSettings = new Proxy({}, {
+		get(target, key) {
+			const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+
+			return settings[key];
+		},
+
+		set(target, key, value) {
+			const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+
+			settings[key] = value;
+
+			localStorage.setItem('userSettings', JSON.stringify(settings));
+		},
+
+		ownKeys() {
+			const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+
+			return Reflect.ownKeys(settings);
+		},
+
+		getOwnPropertyDescriptor() {
+			return {
+				enumerable: true,
+				configurable: true
+			};
+		}
+	});
+
+	window.userSettings = userSettings;
+
 	socket.on('name', name => {
 		$input.placeholder = `${name}, type your message here...`;
 	});
@@ -61,9 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		$messages.scrollTop = $messages.scrollHeight;
 	});
 
+	for(const command of Object.keys(userSettings)) {
+		socket.emit('message', `/${command} ${userSettings[command].join(' ')}`);
+	}
+
 	$input.addEventListener('keyup', event => {
 		if (event.keyCode === 13) {
-			socket.emit('message', $input.value);
+			const message = $input.value;
+
+			if (message.slice(0, 1) === '/') {
+				const parts = message.slice(1).split(' ');
+
+				if (parts.length >= 2) {
+					userSettings[parts[0]] = parts.slice(1);
+				}
+			}
+
+			socket.emit('message', message);
 			$input.value = '';
 		}
 	});
