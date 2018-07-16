@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*.js --exit",
-    "dev": "watchify src/client.js -t brfs -o html/bundle.js",
+    "dev": "watchify src/client.js -t brfs -t [ envify --NODE_ENV development ] -o html/bundle.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --exit"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "brfs": "^2.0.0",
     "browserify": "^16.2.2",
     "dog-names": "^1.0.2",
+    "envify": "^4.1.0",
     "ioredis": "^3.2.2",
     "koa": "^2.5.1",
     "socket.io": "^2.1.1",

@@ -70,11 +70,18 @@ io.on('connection', socket => {
 
 		socket.on('message', async text => {
 			if (text.startsWith('/')) {
+				const commandHandlers = {
+					name(_name = '') {
+						name = _name.slice(0, 9);
 
-				if (text.startsWith('/name')) {
-					name = text.split(' ')[1].slice(0, 9) || name;
-					socket.emit('name', name);
-				}
+						socket.emit('name', name);
+					}
+				};
+
+				const [ command, ...args ] = text.slice(1).split(' ');
+
+				if (command in commandHandlers)
+					commandHandlers[command](...args);
 
 				return;
 			}
