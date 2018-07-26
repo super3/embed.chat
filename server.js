@@ -72,7 +72,10 @@ io.on('connection', socket => {
 			if (text.startsWith('/')) {
 				const commandHandlers = {
 					name(_name = '') {
-						name = _name.slice(0, 9);
+						name = _name.trim().slice(0, 9);
+
+						if(name.length < 2)
+							return;
 
 						socket.emit('name', name);
 					}
