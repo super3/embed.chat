@@ -55,4 +55,8 @@ describe('Server', () => {
 			}
 		);
 	});
+
+	it('should disconnect', () => {
+		socket.emit('disconnect');
+	});
 });
