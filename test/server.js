@@ -10,6 +10,7 @@ describe('Server', () => {
 		socket.emit('subscribe-stats');
 
 		await new Promise(resolve => socket.once('stats', resolve));
+		await new Promise(resolve => socket.once('stats', resolve));
 	});
 
 	let name;
