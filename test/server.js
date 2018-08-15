@@ -21,6 +21,17 @@ describe('Server', () => {
 		name = await new Promise(resolve => socket.once('name', resolve));
 	});
 
+	it('should reject bad custom name', async () => {
+		name = 'j';
+
+		socket.emit('message', `/name ${name}`);
+
+		await new Promise((resolve, reject) => {
+			socket.once('name', reject);
+			setTimeout(resolve, 1000);
+		})
+	});
+
 	it('should relay custom name', async () => {
 		name = 'john';
 
