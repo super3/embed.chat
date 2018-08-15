@@ -9,7 +9,7 @@ describe('Server', () => {
 	it('should send stats', async () => {
 		socket.emit('subscribe-stats');
 
-		await new Promise(resolve => socket.on('stats', resolve));
+		await new Promise(resolve => socket.once('stats', resolve));
 	});
 
 	let name;
@@ -17,14 +17,26 @@ describe('Server', () => {
 	it('should allocate name', async () => {
 		socket.emit('init', 'localhost', true);
 
-		name = await new Promise(resolve => socket.on('name', resolve));
+		name = await new Promise(resolve => socket.once('name', resolve));
+	});
+
+	it('should relay custom name', async () => {
+		name = 'john';
+
+		socket.emit('message', `/name ${name}`);
+
+		assert.deepEqual(
+			await new Promise(resolve =>
+					socket.once('name', name => resolve(name))
+			), name
+		);
 	});
 
 	it('should relay message', async () => {
 		socket.emit('message', 'Hello, World!');
 
 		assert.deepEqual(
-			await new Promise(resolve => socket.on('message', resolve)),
+			await new Promise(resolve => socket.once('message', resolve)),
 			{
 				name,
 				text: 'Hello, World!'
