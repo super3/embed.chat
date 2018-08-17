@@ -52,7 +52,7 @@ slackHandler.use(async ctx => {
 	}
 });
 
-slackHandler.listen(3055);
+slackHandler.listen(3055, '0.0.0.0');
 
 const io = socketIo(3050);
 
