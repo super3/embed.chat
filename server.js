@@ -1,3 +1,4 @@
+const querystring = require('querystring');
 const Redis = require('ioredis');
 const socketIo = require('socket.io');
 const dogNames = require('dog-names');
@@ -35,10 +36,10 @@ slackHandler.use(async ctx => {
 	if(event.type === 'message' && event.subtype !== 'bot_message') {
 		const domain = 'embed.chat';
 
-		const { data } = await axios.post('https://slack.com/api/users.profile.get', {
+		const { data } = await axios.post('https://slack.com/api/users.profile.get', querystring.stringify({
 			token: process.env.TOKEN,
 			user: event.user
-		});
+		}));
 
 		const message = {
 			origin: 'slack',
