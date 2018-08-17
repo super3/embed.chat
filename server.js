@@ -43,7 +43,7 @@ slackHandler.use(async ctx => {
 
 		const message = {
 			origin: 'slack',
-			name: data.profile.display_name,
+			name: profile.display_name || profile.real_name,
 			text: event.text
 		};
 
@@ -56,6 +56,8 @@ slackHandler.use(async ctx => {
 
 		await redis.incr(messagesCounter);
 	}
+
+	ctx.body = "";
 });
 
 slackHandler.listen(3055, '0.0.0.0');
