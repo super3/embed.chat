@@ -35,9 +35,14 @@ slackHandler.use(async ctx => {
 	if(event.type === 'message' && event.subtype !== 'bot_message') {
 		const domain = 'embed.chat';
 
+		const { data } = await axios.post('https://slack.com/api/users.profile.get', {
+			token: process.env.TOKEN,
+			user: event.user
+		});
+
 		const message = {
 			origin: 'slack',
-			name: event.user,
+			name: data.profile.display_name,
 			text: event.text
 		};
 
