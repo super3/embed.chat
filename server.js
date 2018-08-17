@@ -30,9 +30,9 @@ slackHandler.use(async ctx => {
 		return;
 	}
 
-	const { event } = ctx.request.body;
+	if(ctx.request.body.type === 'message.channels') {
+		const { event } = ctx.request.body;
 
-	if(request.body.type === 'message.channels') {
 		const domain = 'embed.chat';
 
 		const message = {
