@@ -1,6 +1,9 @@
 const Redis = require('ioredis');
 const socketIo = require('socket.io');
 const dogNames = require('dog-names');
+const axios = require('axios');
+const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 
 const pub = new Redis();
 const sub = new Redis();
@@ -15,6 +18,37 @@ const pageViewsCounter = 'chat-views';
 const liveChattersCounter = 'chat-live';
 
 sub.subscribe(messagesChannel);
+
+const slackHandler = new Koa();
+
+slackHandler.use(bodyParser());
+
+slackHandler.use(async ctx => {
+	ctx.body = ctx.request.body.challenge;
+
+	const { event } = ctx.request.body;
+
+	const domain = 'localhost';
+
+	const message = {
+		origin: 'slack',
+		name: event.user,
+		text: event.text
+	};
+
+	await pub.publish(messagesChannel, JSON.stringify({
+		message,
+		domain
+	}));
+
+	await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
+
+	await redis.incr(messagesCounter);
+
+	console.log(ctx.request.body);
+});
+
+slackHandler.listen(3055);
 
 const io = socketIo(3050);
 
@@ -102,6 +136,10 @@ io.on('connection', socket => {
 			await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
 
 			await redis.incr(messagesCounter);
+
+			await axios.post(process.env.WEBHOOK, {
+				text: `${name}: ${text}`
+			});
 		});
 
 		socket.on('disconnect', async () => {
