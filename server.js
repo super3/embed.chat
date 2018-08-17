@@ -24,28 +24,32 @@ const slackHandler = new Koa();
 slackHandler.use(bodyParser());
 
 slackHandler.use(async ctx => {
-	ctx.body = ctx.request.body.challenge;
+	if(typeof ctx.request.body.challenge === 'string') {
+		ctx.body = ctx.request.body.challenge;
+
+		return;
+	}
 
 	const { event } = ctx.request.body;
 
-	const domain = 'embed.chat';
+	if(event.type === 'message.channels') {
+		const domain = 'embed.chat';
 
-	const message = {
-		origin: 'slack',
-		name: event.user,
-		text: event.text
-	};
+		const message = {
+			origin: 'slack',
+			name: event.user,
+			text: event.text
+		};
 
-	await pub.publish(messagesChannel, JSON.stringify({
-		message,
-		domain
-	}));
+		await pub.publish(messagesChannel, JSON.stringify({
+			message,
+			domain
+		}));
 
-	await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
+		await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
 
-	await redis.incr(messagesCounter);
-
-	console.log(ctx.request.body);
+		await redis.incr(messagesCounter);
+	}
 });
 
 slackHandler.listen(3055);
