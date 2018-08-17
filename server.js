@@ -32,7 +32,7 @@ slackHandler.use(async ctx => {
 
 	const { event } = ctx.request.body;
 
-	if(event.type === 'message') {
+	if(event.type === 'message' && event.subtype !== 'bot_message') {
 		const domain = 'embed.chat';
 
 		const message = {
