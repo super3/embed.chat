@@ -28,7 +28,7 @@ slackHandler.use(async ctx => {
 
 	const { event } = ctx.request.body;
 
-	const domain = 'localhost';
+	const domain = 'embed.chat';
 
 	const message = {
 		origin: 'slack',
