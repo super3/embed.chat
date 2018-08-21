@@ -3,12 +3,12 @@ const Redis = require('ioredis');
 const socketIo = require('socket.io');
 const dogNames = require('dog-names');
 const axios = require('axios');
-const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
 
-const pub = new Redis();
-const sub = new Redis();
-const redis = new Redis();
+const config = require('./config');
+const pub = require('./lib/pub');
+const sub = require('./lib/sub');
+const redis = require('./lib/redis');
+const slackHandler = require('./lib/slackHandler');
 
 const messagesChannel = 'chat-messages';
 const chatHistory = 'chat-history';
@@ -17,48 +17,6 @@ const domainsSet = 'chat-domains';
 const chattersCounter = 'chat-chatters';
 const pageViewsCounter = 'chat-views';
 const liveChattersCounter = 'chat-live';
-
-sub.subscribe(messagesChannel);
-
-const slackHandler = new Koa();
-
-slackHandler.use(bodyParser());
-
-slackHandler.use(async ctx => {
-	if(typeof ctx.request.body.challenge === 'string') {
-		ctx.body = ctx.request.body.challenge;
-
-		return;
-	}
-
-	const { event } = ctx.request.body;
-
-	if(event.type === 'message' && event.subtype !== 'bot_message') {
-		const domain = 'embed.chat';
-
-		const { data: { profile } } = await axios.post('https://slack.com/api/users.profile.get', querystring.stringify({
-			token: process.env.TOKEN,
-			user: event.user
-		}));
-
-		const message = {
-			origin: 'slack',
-			name: profile.display_name || profile.real_name,
-			text: event.text
-		};
-
-		await pub.publish(messagesChannel, JSON.stringify({
-			message,
-			domain
-		}));
-
-		await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
-
-		await redis.incr(messagesCounter);
-	}
-
-	ctx.body = "";
-});
 
 slackHandler.listen(3055, '0.0.0.0');
 
