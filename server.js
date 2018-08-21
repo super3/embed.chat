@@ -1,10 +1,14 @@
+const querystring = require('querystring');
 const Redis = require('ioredis');
 const socketIo = require('socket.io');
 const dogNames = require('dog-names');
+const axios = require('axios');
 
-const pub = new Redis();
-const sub = new Redis();
-const redis = new Redis();
+const config = require('./config');
+const pub = require('./lib/pub');
+const sub = require('./lib/sub');
+const redis = require('./lib/redis');
+const slackHandler = require('./lib/slackHandler');
 
 const messagesChannel = 'chat-messages';
 const chatHistory = 'chat-history';
@@ -14,7 +18,7 @@ const chattersCounter = 'chat-chatters';
 const pageViewsCounter = 'chat-views';
 const liveChattersCounter = 'chat-live';
 
-sub.subscribe(messagesChannel);
+slackHandler.listen(3055, '0.0.0.0');
 
 const io = socketIo(3050);
 
@@ -102,6 +106,10 @@ io.on('connection', socket => {
 			await redis.lpush(`${chatHistory}:${domain}`, JSON.stringify(message));
 
 			await redis.incr(messagesCounter);
+
+			await axios.post(process.env.WEBHOOK, {
+				text: `${name}: ${text}`
+			});
 		});
 
 		socket.on('disconnect', async () => {
