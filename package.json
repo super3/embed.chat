@@ -25,10 +25,10 @@
     "dog-names": "^1.0.2",
     "dotenv": "^6.0.0",
     "envify": "^4.1.0",
-    "ioredis": "^3.2.2",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-route": "^3.2.0",
+    "ioredis": "^4.0.0",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1"
   },
@@ -37,7 +37,7 @@
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "watchify": "^3.11.0",
-    "xo": "^0.21.1"
+    "xo": "^0.22.0"
   },
   "xo": {
     "ignores": [
