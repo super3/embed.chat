@@ -78,17 +78,19 @@ io.on('connection', socket => {
 					name(_name = '') {
 						name = _name.trim().slice(0, 9);
 
-						if(name.length < 2)
+						if (name.length < 2) {
 							return;
+						}
 
 						socket.emit('name', name);
 					}
 				};
 
-				const [ command, ...args ] = text.slice(1).split(' ');
+				const [command, ...args] = text.slice(1).split(' ');
 
-				if (command in commandHandlers)
+				if (command in commandHandlers) {
 					commandHandlers[command](...args);
+				}
 
 				return;
 			}
