@@ -29,7 +29,7 @@ describe('Server', () => {
 		await new Promise((resolve, reject) => {
 			socket.once('name', reject);
 			setTimeout(resolve, 1000);
-		})
+		});
 	});
 
 	it('should relay custom name', async () => {
@@ -39,7 +39,7 @@ describe('Server', () => {
 
 		assert.deepEqual(
 			await new Promise(resolve =>
-					socket.once('name', name => resolve(name))
+				socket.once('name', name => resolve(name))
 			), name
 		);
 	});

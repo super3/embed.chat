@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		$messages.scrollTop = $messages.scrollHeight;
 	});
 
-	for(const command of Object.keys(userSettings)) {
+	for (const command of Object.keys(userSettings)) {
 		socket.emit('message', `/${command} ${userSettings[command].join(' ')}`);
 	}
 
