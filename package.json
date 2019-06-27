@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/super3/chat#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "brfs": "^2.0.0",
     "browserify": "^16.2.3",
     "dog-names": "^1.0.2",
