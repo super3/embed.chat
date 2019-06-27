@@ -4,8 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/ovsoinc/embed.chat/badge.svg?branch=master)](https://coveralls.io/github/ovsoinc/embed.chat?branch=master)
 [![License](https://img.shields.io/badge/license-AGPLv3-blue.svg?label=license)](https://github.com/Storj/ovsoinc/embed.chat/blob/master/LICENSE)
 [![GitHub contributors](https://img.shields.io/github/contributors/ovsoinc/embed.chat.svg)](https://github.com/ovsoinc/embed.chat/graphs/contributors/)
-[![dependencies Status](https://david-dm.org/ovsoinc/embed.chat/status.svg)](https://david-dm.org/ovsoinc/embed.chat)
-[![devDependencies Status](https://david-dm.org/ovsoinc/embed.chat/dev-status.svg)](https://david-dm.org/ovsoinc/embed.chat?type=dev)
+[![maintenance Status](https://img.shields.io/maintenance/no/2018.svg)](#)
 
 Embed chat in your website in less than 5 minutes.
 
